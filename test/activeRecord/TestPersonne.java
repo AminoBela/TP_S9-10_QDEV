@@ -1,6 +1,5 @@
-package Test;
+package activeRecord;
 
-import activeRecord.Personne;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
