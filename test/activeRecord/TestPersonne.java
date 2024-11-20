@@ -11,14 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestPersonne {
 
     @BeforeEach
-    void Ini() throws SQLException {
+    void ini() throws SQLException {
         Personne.createTable();
         new Personne("Lambert", "Valentino").save();
         new Personne("Bella", "Amin").save();
     }
 
     @AfterEach
-    void Reini() throws SQLException {
+    void reini() throws SQLException {
         Personne.deleteTable();
     }
 
