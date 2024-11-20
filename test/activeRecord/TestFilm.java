@@ -52,6 +52,7 @@ public class TestFilm {
         Personne p = Personne.findById(1);
         Film f = new Film("Film 3", p);
         f.save();
+        System.out.println("Films pour le réalisateur 1 : " + Film.findByRealisateur(p).size());
         assertNotEquals(-1, f.getId());
         assertEquals(3, Film.findByRealisateur(p).size());
     }
