@@ -133,5 +133,14 @@ public class Film {
     }
 
 
-
+    public void delete() throws SQLException {
+        if (this.id != -1) {
+            Connection connection = DBConnection.getInstance().getConnection();
+            String query = "DELETE FROM film WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(query);
+            stmt.setInt(1, this.id);
+            stmt.executeUpdate();
+            this.id = -1;
+        }
+    }
 }
