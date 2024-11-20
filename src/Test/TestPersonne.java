@@ -14,12 +14,12 @@ public class TestPersonne {
     @BeforeEach
     void Ini() throws SQLException {
         Personne.createTable();
-        new Personne("Durand", "Paul").save();
-        new Personne("Martin", "Anne").save();
+        new Personne("Lambert", "Valentino").save();
+        new Personne("Bella", "Amin").save();
     }
 
     @AfterEach
-    void tearDown() throws SQLException {
+    void Reini() throws SQLException {
         Personne.deleteTable();
     }
 
@@ -32,28 +32,35 @@ public class TestPersonne {
     void testFindById() throws SQLException {
         Personne p = Personne.findById(1);
         assertNotNull(p);
-        assertEquals("Durand", p.nom);
+        assertEquals("Lambert", p.getNom());
+        assertEquals("Valentino", p.getPrenom());
     }
 
     @Test
     void testFindByName() throws SQLException {
-        assertEquals(1, Personne.findByName("Martin").size());
+        assertEquals(1, Personne.findByName("Bella").size());
+        Personne p = Personne.findByName("Bella").get(0);
+        assertEquals("Bella", p.getNom());
+        assertEquals("Amin", p.getPrenom());
     }
 
     @Test
     void testSaveNew() throws SQLException {
         Personne p = new Personne("Dupont", "Claire");
         p.save();
-        assertNotEquals(-1, p.id);
+        assertNotEquals(-1, p.getId());
         assertEquals(3, Personne.findAll().size());
     }
 
     @Test
     void testUpdate() throws SQLException {
         Personne p = Personne.findById(1);
-        p.nom = "Lemoine";
+        p.setNom("Dupont");
+        p.setPrenom("Jacques");
         p.save();
-        assertEquals("Lemoine", Personne.findById(1).nom);
+        Personne PersonneMaj = Personne.findById(1);
+        assertEquals("Dupont", PersonneMaj.getNom());
+        assertEquals("Jacques", PersonneMaj.getPrenom());
     }
 
     @Test
@@ -61,5 +68,6 @@ public class TestPersonne {
         Personne p = Personne.findById(1);
         p.delete();
         assertNull(Personne.findById(1));
+        assertEquals(1, Personne.findAll().size());
     }
 }
