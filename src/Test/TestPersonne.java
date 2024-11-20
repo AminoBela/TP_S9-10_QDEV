@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestPersonne {
 
     @BeforeEach
-    void setUp() throws SQLException {
+    void Ini() throws SQLException {
         Personne.createTable();
         new Personne("Durand", "Paul").save();
         new Personne("Martin", "Anne").save();
