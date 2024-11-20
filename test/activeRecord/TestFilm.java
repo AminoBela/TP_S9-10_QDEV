@@ -11,7 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestFilm {
 
     @BeforeEach
-    void ini() throws SQLException, RealisateurAbsentException {
+    void setUp() throws SQLException {
+        Film.deleteTable();
+        Personne.deleteTable();
         Personne.createTable();
         Film.createTable();
 
