@@ -45,7 +45,7 @@ public class TestPersonne {
 
     @Test
     void testSaveNew() throws SQLException {
-        Personne p = new Personne("Dupont", "Claire");
+        Personne p = new Personne("Haha", "Hehe");
         p.save();
         assertNotEquals(-1, p.getId());
         assertEquals(3, Personne.findAll().size());
@@ -54,12 +54,12 @@ public class TestPersonne {
     @Test
     void testUpdate() throws SQLException {
         Personne p = Personne.findById(1);
-        p.setNom("Dupont");
-        p.setPrenom("Jacques");
+        p.setNom("Aled");
+        p.setPrenom("Moi");
         p.save();
         Personne PersonneMaj = Personne.findById(1);
-        assertEquals("Dupont", PersonneMaj.getNom());
-        assertEquals("Jacques", PersonneMaj.getPrenom());
+        assertEquals("Aled", PersonneMaj.getNom());
+        assertEquals("Moi", PersonneMaj.getPrenom());
     }
 
     @Test
