@@ -123,6 +123,8 @@ public class Film {
         }
     }
 
+
+
     private void update() throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         String query = "UPDATE film SET titre = ?, id_real = ? WHERE id = ?";

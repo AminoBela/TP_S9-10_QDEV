@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,10 +53,12 @@ public class TestFilm {
         Personne p = Personne.findById(1);
         Film f = new Film("Film 3", p);
         f.save();
-        System.out.println("Films pour le réalisateur 1 : " + Film.findByRealisateur(p).size());
         assertNotEquals(-1, f.getId());
-        assertEquals(3, Film.findByRealisateur(p).size());
+        List<Film> films = Film.findByRealisateur(p);
+        assertEquals(3, films.size());
     }
+
+
 
     @Test
     void testDelete() throws SQLException {
